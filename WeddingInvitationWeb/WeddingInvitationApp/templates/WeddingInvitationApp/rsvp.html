@@ -1,0 +1,244 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP</title>
+    <link rel="stylesheet" href="{% static 'WeddingInvitationApp/css/styles.css' %}">
+ 
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="logo">
+                <a href="#">Tsholo & Sbu</a>
+            </div>
+            <div id="mainListDiv" class="main_list">
+                <ul class="navlinks">
+                    <li><a href="#our_story_img">Our Story</a></li>
+                    <li><a href="#details">The Big Day</a></li>
+                    <!-- <li><a href="#gallery">Gallery</a></li> -->
+                    <!-- <li><a href="#contact">Contact</a></li> -->
+                    <li><a href="#rsvp">RSVP</a></li>
+                </ul>
+            </div>
+            <span class="navTrigger">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </div>
+    </nav>
+
+    <header>
+        <div>
+            <img src="{% static 'WeddingInvitationApp/images/1.png' %}" alt="Lovers" width="1366px" height="700px"
+                style="margin: 0px;">
+        </div>
+    </header>
+    
+    <main class="container" style="padding-left: 10%; padding-right: 10%; ">
+        
+        
+        <div class="info-cards" style="padding-left: 0px; padding-right: 0px;">
+
+            <section style="width: 100%; background-color: #F6F2E7; box-shadow: none;">
+            
+                <h2>The</h2>
+                <h1 style="font-size: 30px;">Molefe & Mahlangu</h1>
+                <h2>Families Joyfully Invite You To The Mahlabiso Celebration of Tsholofelo & Sibusiso</h2>
+            </section>
+            <section>
+                <h1>Countdown To The Big day</h1>
+                <h2 id="countdown"></h2>
+            </section>
+            
+            
+            <img src="{% static 'WeddingInvitationApp/images/2.png' %}" alt="">
+            
+            <section id="story">
+                
+                <div class="first-card" style="padding-top: 0px;">
+                    <img id="our_story_img" src="{% static 'WeddingInvitationApp/images/ndebele_print.jpeg' %}" alt="Ndebele Print">
+                </div>
+                <!--<h2 class="container-heading" style="height: 100px;">Our Story</h2>-->
+                <div id="countdown"></div>
+                <p>
+                    We first met in 2002, as wide-eyed 5th graders in Primary school. It was there that we built a
+                    friendship that would
+                    withstand the test of time. Though high school took us in different directions, fate had a special plan
+                    for us. At
+                    university, we found each other again without any prior communication. <br> We rekindled our bond with
+                    movie dates and
+                    long
+                    walks through the city. After graduation, Sbu moved away for work, and once again, our paths diverged.
+                    But destiny
+                    wasn’t done with us yet. <br><br> When Sbu moved back to Pretoria, he reached out, and our first date
+                    back together was
+                    a
+                    beautiful journey down memory lane, talking and laughing until the sun set.
+                    <br><br>
+                    Our first impressions of each other were simple but telling. Tsholo’s quirky humor and intelligence
+                    caught Sbu’s eye,
+                    while Tsholo found Sbu’s nerdy charm fascinating and endearing. It was as if our childhood friendship
+                    never skipped a
+                    beat. <br><br>
+
+                    As we look towards our future, we are excited to build a life filled with love, friendship, and family.
+                    We can’t wait to
+                    grow together, to face life’s adventures hand in hand, and to create a legacy of love.
+                </p>
+            </section>
+
+            <img src="{% static 'WeddingInvitationApp/images/3.png' %}" alt="">
+
+            <section id="details">
+                <div class="first-card" style="padding-top: 0px;">
+                    <img src="{% static 'WeddingInvitationApp/images/ndebele_print.jpeg' %}" alt="Ndebele Print">
+                </div>
+
+
+                <div class="detail-card">
+                    <h3>Date</h3>
+                    <p>21st September 2024</p>
+                </div>
+
+                <div class="detail-card">
+                    <h3>Time</h3>
+                    <p>13:00</p>
+                </div>
+                <div class="detail-card">
+                    <h3>Venue</h3>
+                    <p>1102 Section D, Ekangala</p>
+                </div>
+
+            </section>
+
+            <img src="{% static 'WeddingInvitationApp/images/4.png' %}">
+
+            
+            <section id="rsvp">
+                <div class="photo_class">
+                    <form id="rsvp-form" method="post" action="{% url 'rsvp' %}">
+                        {% csrf_token %}
+                    
+                        <label for="name">Your First Name(s):</label>
+                        <input type="text" id="name" name="name" placeholder="eg. Tshepo Steve" required>
+                    
+                        <label for="name">Your Last Name:</label>
+                        <input type="text" id="surname" name="surname" placeholder="eg. Kekana" required>
+                    
+                        <label for="cell">Cellphone Number</label>
+                        <input type="number" name="cell" id="cell" placeholder="eg. 0612345678">
+                    
+                        <label for="attending">Are you attending the church ceremony?:</label>
+                        {{ form.church_attendence }}
+                    
+                        <label for="attending">Are you attending the home ceremony?:</label>
+                        {{ form.home_attendence }}
+                    
+                        <label for="song_request">Enter a name of a song that you would like to hear at the wedding</label>
+                        <input id="attending_church" type="text" name="song_request" placeholder="eg. Thathi Sgubu by Bongo Maffin">
+                    
+                        <button id="btn" type="submit" onclick="submitAlert()">Submit</button>
+                    </form>
+                </div>
+     
+            </section>
+        
+        </div>
+    </main>
+ 
+    <footer>
+        <p>&copy; 2024 - Tsholo & Sbu | ChopaDevs</p>
+    </footer>
+
+    <!-- Jquery needed -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+                const rsvpForm = document.getElementById('rsvp-form');
+                rsvpForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('name').value;
+                    const attending = document.getElementById('attending').value;
+                    if (name && attending) {
+                        alert(`Thank you, ${name}, for your RSVP. You have selected to ${attending === 'yes' ? 'attend' : 'not attend'} the wedding.`);
+                        rsvpForm.reset();
+                    }
+                });
+            });
+
+            $(window).scroll(function () {
+                if ($(document).scrollTop() > 50) {
+                    $('.nav').addClass('affix');
+                    console.log("OK");
+                } else {
+                    $('.nav').removeClass('affix');
+                }
+            });
+
+            function submitAlert() {
+                alert("Form submitted!");
+            }
+
+            $('.navTrigger').click(function () {
+                $(this).toggleClass('active');
+                console.log("Clicked menu");
+                $("#mainListDiv").toggleClass("show_list");
+                $("#mainListDiv").fadeIn();
+
+            });
+
+            document.getElementById('search').addEventListener('keyup', function () {
+                var searchTerm = this.value.toLowerCase();
+                var tables = document.querySelectorAll('table tbody');
+                tables.forEach(function (tbody) {
+                    var rows = tbody.querySelectorAll('tr');
+                    rows.forEach(function (row) {
+                        var cells = row.querySelectorAll('td');
+                        var found = Array.from(cells).some(function (cell) {
+                            return cell.textContent.toLowerCase().includes(searchTerm);
+                        });
+                        row.style.display = found ? '' : 'none';
+                    });
+                });
+            });
+    </script>
+    <script>
+        // Set the date we're counting down to
+            var countDownDate = new Date("Sep 21, 2024 00:00:00").getTime();
+
+            // Update the count down every 1 second
+            var countdownfunction = setInterval(function () {
+
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Output the result in an element with id="countdown"
+                document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+                    + minutes + "m " + seconds + "s ";
+
+                // If the count down is over, write some text 
+                if (distance < 0) {
+                    clearInterval(countdownfunction);
+                    document.getElementById("countdown").innerHTML = "EXPIRED";
+                }
+            }, 1000);
+    </script>
+</body>
+
+</html>

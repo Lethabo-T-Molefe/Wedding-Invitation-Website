@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest Stats - Tsholo & Rex's Wedding</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'WeddingInvitationApp/css/styles.css' %}">
+    <style>
+        /* Add your custom styles here */
+        .search-bar {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-bar input[type="text"] {
+            width: 100%;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 2px solid #ccc;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+        }
+
+        .search-bar input[type="text"]::placeholder {
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .search-bar input[type="text"]:focus {
+            border-color: #007BFF;
+            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+            background-color: #f8f9fa;
+        }
+
+        .search-bar::before {
+
+            font-family: FontAwesome;
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #007BFF;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 >Guest Statistics</h1>
+    </header>
+
+    <div class="search-bar" style="width: 75%;">
+
+        <input type="text" id="search" placeholder="Search for a guest...">
+    </div>
+    <main class="container" style="padding-left: 10%; padding-right: 10%; ">
+
+
+        <!-- Section for guests attending the church ceremony -->
+        <section id="church-ceremony">
+            <h2 class="stat_heading" style="font-family: 'Edwardian Script ITC', Arial, Helvetica, sans-serif; font-size: 2rem; margin-bottom: 0;">Only Attending Church Ceremony</h2>
+            <h4>Number of guests : {{ num_attending_church }}</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for guest in attending_church %}
+                    <tr>
+                        <td align="left">{{ guest.name }} {{guest.surname}}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td>No guests are attending only the church ceremony.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section for guests attending the home ceremony -->
+        <section id="home-ceremony">
+            <h2 class="stat_heading" style="font-family: 'Edwardian Script ITC', Arial, Helvetica, sans-serif; font-size: 2rem; margin-bottom: 0;">Only Attending Home Ceremony</h2>
+            <h4>Number of guests : {{ num_attending_home }}</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th> </th>
+                        <th>Special Song</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for guest in attending_home %}
+                    <tr>
+                        <td align="left">{{ guest.name }} {{guest.surname}}</td>
+                        <td align="center" style="padding-left: 30px; padding-right: 30px;"> - </td>
+                        <td align="center">{{guest.song_request}}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td>No guests attending only the home ceremony.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section for guests attending both ceremonies -->
+        <section id="both-ceremonies">
+            <h2 class="stat_heading" style="font-family: 'Edwardian Script ITC', Arial, Helvetica, sans-serif; font-size: 2rem; margin-bottom: 0;">Attending Both Ceremonies</h2>
+            <h4>Number of guests : {{ num_both_ceremonies }}</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th> </th>
+                        <th>Special Song</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for guest in both_ceremonies %}
+                    <tr style="padding-bottom: 200px;">
+                        <td align="left">{{ guest.name }} {{guest.surname}}</td>
+                        <td align="center" style="padding-left: 30px; padding-right: 30px;"> - </td>
+                        <td align="center">{{guest.song_request}}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td>No guests attending both ceremonies.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section for guests not attending any ceremonies -->
+        <section id="no-attendance">
+            <h2 class="stat_heading" style="font-family: 'Edwardian Script ITC', Arial, Helvetica, sans-serif; font-size: 2rem; margin-bottom: 0;">Not Attending Any Ceremonies</h2>
+            <h4>Number of guests : {{ num_no_attendance }}</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for guest in no_attendance %}
+                    <tr>
+                        <td>{{ guest.name }} {{guest.surname}}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td>All guests are attending at least one ceremony.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Tsholo & Rex | ChopaDevs</p>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+    <script>
+        // JavaScript for search functionality
+        document.getElementById('search').addEventListener('keyup', function () {
+            var searchTerm = this.value.toLowerCase();
+            var tables = document.querySelectorAll('table tbody');
+            tables.forEach(function (tbody) {
+                var rows = tbody.querySelectorAll('tr');
+                rows.forEach(function (row) {
+                    var cells = row.querySelectorAll('td');
+                    var found = Array.from(cells).some(function (cell) {
+                        return cell.textContent.toLowerCase().includes(searchTerm);
+                    });
+                    row.style.display = found ? '' : 'none';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

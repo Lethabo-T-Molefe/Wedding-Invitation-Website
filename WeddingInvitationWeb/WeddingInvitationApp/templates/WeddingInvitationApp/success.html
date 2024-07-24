@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link rel="stylesheet" href="{% static 'WeddingInvitationApp/css/styles.css' %}">
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="logo">
+                <a href="#">Tsholo & Sbu</a>
+            </div>
+            <div id="mainListDiv" class="main_list">
+                <ul class="navlinks">
+                    <li><a href="#our_story_img">Our Story</a></li>
+                    <li><a href="#details">The Big Day</a></li>
+                    <li><a href="#rsvp">RSVP</a></li>
+                </ul>
+            </div>
+            <span class="navTrigger">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </div>
+    </nav>
+
+    <header>
+        <div>
+            <img src="{% static 'WeddingInvitationApp/images/1.png' %}" alt="Lovers" width="1366px" height="700px"
+                style="margin: 0px;">
+        </div>
+    </header>
+
+    <main class="container" style="padding-left: 10%; padding-right: 10%;">
+        <section>
+            <div class="detail-card">
+                <h1>RSVP Successful!</h1>
+                <p>Thank you for confirming your attendance. We look forward to celebrating with you!</p>
+                <button onclick="window.location.href='{% url 'rsvp' %}'">Back to RSVP</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Tsholo & Sbu | ChopaDevs</p>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(window).scroll(function () {
+            if ($(document).scrollTop() > 50) {
+                $('.nav').addClass('affix');
+                console.log("OK");
+            } else {
+                $('.nav').removeClass('affix');
+            }
+        });
+
+        $('.navTrigger').click(function () {
+            $(this).toggleClass('active');
+            console.log("Clicked menu");
+            $("#mainListDiv").toggleClass("show_list");
+            $("#mainListDiv").fadeIn();
+        });
+    </script>
+</body>
+
+</html>
