@@ -1,16 +1,43 @@
 from django.shortcuts import render, redirect
-from .forms import GuestAttendenceForm
+from .forms import *
 from .models import GuestAttendence
 
 def rsvp(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = GuestAttendenceForm(request.POST)
+        plus_one_form = GuestsPlusOneForm(request.POST)
+        
         if form.is_valid():
-            form.save()
+            guest_data = form.cleaned_data
+            
+            # Extract and remove plus_one data from guest_data
+            plus_one_data = {
+                'plus_one_name': guest_data.pop('plus_one_name', None),
+                'plus_one_surname': guest_data.pop('plus_one_surname', None),
+                'plus_one_relation': guest_data.pop('plus_one_relation', None),
+            }
+            
+            cell = guest_data.get('cell')
+            
+            # Create or get the guest attendance record
+            guest, created = GuestAttendence.objects.get_or_create(cell=cell, defaults=guest_data)
+            
+            # Handle plus one if provided
+            if plus_one_data['plus_one_name'] and plus_one_data['plus_one_surname'] and plus_one_data['plus_one_relation']:
+                plus_one, plus_one_created = GuestsPlusOne.objects.get_or_create(
+                    plus_one_name=plus_one_data['plus_one_name'],
+                    plus_one_surname=plus_one_data['plus_one_surname'],
+                    plus_one_relation=plus_one_data['plus_one_relation']
+                )
+                guest.plus_one = plus_one
+                guest.save()
+
             return redirect('success')
     else:
         form = GuestAttendenceForm()
-    return render(request, 'WeddingInvitationApp/rsvp.html', {'form': form})
+        plus_one_form = GuestsPlusOneForm()
+
+    return render(request, 'WeddingInvitationApp/rsvp.html', {'form': form, 'plus_one_form': plus_one_form})
 
 def success(request):
     return render(request, 'WeddingInvitationApp/success.html')
