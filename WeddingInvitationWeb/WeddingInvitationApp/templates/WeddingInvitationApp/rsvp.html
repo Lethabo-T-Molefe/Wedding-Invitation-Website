@@ -141,7 +141,7 @@
                 </div>
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3702.7267642746383!2d28.746073281214073!3d-25.696472322086972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1eeaabf250eb8eeb%3A0xc2a702c005509ddd!2s1102%20Section%20D%2C%20Ekangala%20D%2C%20Ekangala%2C%201021!5e0!3m2!1sen!2sza!4v1722812685257!5m2!1sen!2sza"
-                    width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                    width="75%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </section>
 
@@ -253,112 +253,103 @@
                 <h1>NO KIDS ALLOWED</h1>
             </section>
             
-            <section id="gift-registry">
-                <div class="first-card" style="padding-top: 0px;">
-                    <img src="{% static 'WeddingInvitationApp/images/ndebele_print.jpeg' %}" alt="Ndebele Print">
+        <section id="gift-registry">
+            <div class="first-card" style="padding-top: 0px;">
+                <img src="{% static 'WeddingInvitationApp/images/ndebele_print.jpeg' %}" alt="Ndebele Print">
+            </div>
+            <h1>Gift Registry</h1>
+            <img src="{% static 'WeddingInvitationApp/images/gift.jpeg' %}" style="border-radius: 15px;" alt="" class="gift-image">
+        
+            <div class="gift-reg-container">
+                <div class="gift-reg">
+                    <h5>We are so excited to celebrate our special day with you! Your
+                        presence is the best gift we could ask for. If you'd like
+                        to give a little extra love, we’ve put together a registry of things we adore.</h5>
+        
+                    <h5>With hugs and happiness,</h5>
+                    <h5>Tsholo & Sbu</h5>
                 </div>
-                <h1>Gift Registry</h1>
-                <img src="{% static 'WeddingInvitationApp/images/gift.jpeg' %}" alt="" style="height: 300px; border-radius: 15px;">
-            
-                <div class="gift-reg-container">
-                    <div class="gift-reg">
-                        <h5>We are so excited to celebrate our special day with you! Your
-                            presence is the best gift we could ask for. If you'd like
-                            to give a little extra love, we’ve put together a registry of things we adore.</h5>
-            
-                        <h5>With hugs and happiness,</h5>
-                        <h5>Tsholo & Sbu</h5>
-                    </div>
-                    <div class="gift-reg-button">
-                        <button type="button"
-                            onclick="location.href='https://www.mrphome.com/en_za/giftregistry/view/index/id/TMWEDD3062'">
-                            <i class="fa fa-gift" aria-hidden="true"></i> Buy Gift
-                        </button>
-                    </div>
+                <div class="logos" style="display: flexbox;" >
+                    <img class="img-logo" src="{% static 'WeddingInvitationApp/images/home.png' %}" alt="">
+                    <img src="{% static 'WeddingInvitationApp/images/makro.png' %}" alt="" style="height: 30px; width: 100px;margin-bottom: 30px;">
+                    <img class="img-logo" src="{% static 'WeddingInvitationApp/images/volpes.png' %}" alt="">
+                    <img class="img-logo" src="{% static 'WeddingInvitationApp/images/takealot.svg' %}" alt="">
+                    <img class="img-logo" src="{% static 'WeddingInvitationApp/images/mrph.png' %}" alt="">
                 </div>
-            </section>
+                <div class="gift-reg-button">
+                    <button type="button"
+                        onclick="location.href='https://www.mrphome.com/en_za/giftregistry/view/index/id/TMWEDD3062'">
+                        <i class="fa fa-gift" aria-hidden="true"></i> Buy Gift
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <style>
+            .img-logo {
+                width: 100px;
+                height: 80px;
+            }
+
+            #gift-registry {
+                padding: 20px;
+                text-align: center;
+            }
+        
+            h1 {
+                margin: 20px 0;
+            }
+        
+            .gift-reg-container {
+                display: flex;
+                flex-direction: column;
+                /* Default layout for small screens */
+                align-items: center;
+                gap: 20px;
+                width: 100%;
+                max-width: 600px;
+                /* Adjust to match other elements */
+                margin: 0 auto;
+                /* Center container */
+            }
+        
+            .gift-reg {
+                background-color: #ffffffbe;
+                padding: 20px;
+                width: 100%;
+                height: auto;
+                border-radius: 15px;
+                box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+                box-sizing: border-box;
+                overflow: hidden;
+            }
+        
+            .gift-reg-button {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+        
+            .gift-reg-button button {
+                border-radius: 15px;
+                height: 50px;
+                width: 110px;
+                border: none;
+                background-color: #db843d;
+                color: #F6F2E7;
+                font-size: large;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+        
+            .gift-reg-button button:hover {
+                background-color: #ff7d12c2;
+            }
+        
+            /* Responsive Design */
             
-            <style>
-                #gift-registry {
-                    padding: 20px;
-                    text-align: center;
-                }
-            
-                /* .first-card img {
-                    width: 100%;
-                    padding-top: 10px;
-                    height: 50px;
-                    background-image: url("../images/ndebele_print.jpeg");
-                    background-size: contain;
-                    border-radius: 10px;
-                } */
-            
-                h1 {
-                    margin: 20px 0;
-                }
-            
-            
-                .gift-reg-container {
-                    display: flex;
-                    flex-direction: column;
-                    /* Default layout for small screens */
-                    align-items: center;
-                    gap: 20px;
-                }
-            
-                .gift-reg {
-                    background-color: #ffffffbe;
-                    padding: 20px;
-                    width: 100%;
-                    max-width: 600px;
-                    /* Adjust as needed */
-                    height: auto;
-                    border-radius: 15px;
-                    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
-                    box-sizing: border-box;
-                    overflow: hidden;
-                }
-            
-                .gift-reg-button {
-                    display: flex;
-                    justify-content: center;
-                    width: 100%;
-                }
-            
-                .gift-reg-button button {
-                    border-radius: 15px;
-                    height: 50px;
-                    width: 110px;
-                    border: none;
-                    background-color: #db843d;
-                    color: #F6F2E7;
-                    font-size: large;
-                    cursor: pointer;
-                    transition: background-color 0.3s;
-                }
-            
-                .gift-reg-button button:hover {
-                    background-color: #ff7d12c2;
-                }
-            
-                /* Responsive Design */
-                /* @media (max-width: 768px) {
-                    .gift-reg-container {
-                        flex-direction: row;
-                        /* Side-by-side layout for larger screens 
-                        align-items: flex-start;
-                    }
-            
-                    .gift-reg {
-                        flex: 1;
-                        margin-right: 20px;
-                    }
-            
-                    .gift-reg-button {
-                        align-self: flex-end;
-                    }
-                } */
-            </style>
+        </style>
+
 
 
         </div>
