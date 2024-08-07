@@ -227,7 +227,6 @@ header {
 }
 
 .first-card {
-    background-color: rgba(255, 5, 5, 0.856);
     width: 100%;
     padding-top: 10px;
     height: 50px;
@@ -333,6 +332,33 @@ form button:hover {
     cursor: pointer;
 }
 
+/*Gift Registry*/
+.buy-btn {
+    background-color: #db843d;
+    background-size: cover;
+    color: hsla(0, 0%, 100%, 0.863);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.buy-btn:hover {
+    background: #ff7d12c2;
+}
+
+.gift-reg {
+    width: 100%;
+    max-width: 500px;
+    background: #eec09f;
+    background-color: #ffa46300;
+    background-size: cover;
+    border: 2px solid hsla(0, 0%, 0%, 0);
+    box-shadow: #ffbe8f09;
+    background-image: url("../images/gift.jpeg");
+    background-color: #F6F2E7;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 /* Stats Page */
 h2 .stat_heading{
     font-family: 'Edwardian Script ITC', Arial, Helvetica, sans-serif;

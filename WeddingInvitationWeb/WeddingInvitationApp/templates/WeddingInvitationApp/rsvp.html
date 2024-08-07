@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSVP</title>
     <link rel="stylesheet" href="{% static 'WeddingInvitationApp/css/styles.css' %}">
- 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <nav class="nav">
@@ -115,7 +117,7 @@
                             <td><p><strong>Time:</strong> 11:00</p></td>
                         </tr>
                         <tr>
-                            <td><p><strong>Venue:</strong><p>United Reformed Charch in South Africa(Dutch), 1745 Section D Ekangala</p></p></td>
+                            <td><p><strong>Venue:</strong><p>United Reformed Charch in South Africa(Dutch)<br> 1745 Section D Ekangala</p></p></td>
                         </tr>
                     </table>
                 </div>
@@ -137,7 +139,10 @@
                         </tr>
                     </table>
                 </div>
-
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3702.7267642746383!2d28.746073281214073!3d-25.696472322086972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1eeaabf250eb8eeb%3A0xc2a702c005509ddd!2s1102%20Section%20D%2C%20Ekangala%20D%2C%20Ekangala%2C%201021!5e0!3m2!1sen!2sza!4v1722812685257!5m2!1sen!2sza"
+                    width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </section>
 
             <img src="{% static 'WeddingInvitationApp/images/4.png' %}">
@@ -176,8 +181,9 @@
                         <div id="popup" class="popup" hidden style="
                             background-color: #fff; 
                             position: relative;
-                            bottom: 27rem;
+                            bottom: 20rem;
                             padding: 20px;
+                            margin-right: 425px;
                             border-radius: 15px;
                             box-shadow: 2px 2px 5px 5px rgba(0,0,0,0.15);
                         "> 
@@ -252,8 +258,108 @@
                     <img src="{% static 'WeddingInvitationApp/images/ndebele_print.jpeg' %}" alt="Ndebele Print">
                 </div>
                 <h1>Gift Registry</h1>
-                <img width="50%" height="50%" src="{% static 'WeddingInvitationApp/images/under_construction.png' %}" alt="Under Construction">
+                <img src="{% static 'WeddingInvitationApp/images/gift.jpeg' %}" alt="" style="height: 300px; border-radius: 15px;">
+            
+                <div class="gift-reg-container">
+                    <div class="gift-reg">
+                        <h5>We are so excited to celebrate our special day with you! Your
+                            presence is the best gift we could ask for. If you'd like
+                            to give a little extra love, we’ve put together a registry of things we adore.</h5>
+            
+                        <h5>With hugs and happiness,</h5>
+                        <h5>Tsholo & Sbu</h5>
+                    </div>
+                    <div class="gift-reg-button">
+                        <button type="button"
+                            onclick="location.href='https://www.mrphome.com/en_za/giftregistry/view/index/id/TMWEDD3062'">
+                            <i class="fa fa-gift" aria-hidden="true"></i> Buy Gift
+                        </button>
+                    </div>
+                </div>
             </section>
+            
+            <style>
+                #gift-registry {
+                    padding: 20px;
+                    text-align: center;
+                }
+            
+                /* .first-card img {
+                    width: 100%;
+                    padding-top: 10px;
+                    height: 50px;
+                    background-image: url("../images/ndebele_print.jpeg");
+                    background-size: contain;
+                    border-radius: 10px;
+                } */
+            
+                h1 {
+                    margin: 20px 0;
+                }
+            
+            
+                .gift-reg-container {
+                    display: flex;
+                    flex-direction: column;
+                    /* Default layout for small screens */
+                    align-items: center;
+                    gap: 20px;
+                }
+            
+                .gift-reg {
+                    background-color: #ffffffbe;
+                    padding: 20px;
+                    width: 100%;
+                    max-width: 600px;
+                    /* Adjust as needed */
+                    height: auto;
+                    border-radius: 15px;
+                    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+                    box-sizing: border-box;
+                    overflow: hidden;
+                }
+            
+                .gift-reg-button {
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                }
+            
+                .gift-reg-button button {
+                    border-radius: 15px;
+                    height: 50px;
+                    width: 110px;
+                    border: none;
+                    background-color: #db843d;
+                    color: #F6F2E7;
+                    font-size: large;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+                }
+            
+                .gift-reg-button button:hover {
+                    background-color: #ff7d12c2;
+                }
+            
+                /* Responsive Design */
+                /* @media (max-width: 768px) {
+                    .gift-reg-container {
+                        flex-direction: row;
+                        /* Side-by-side layout for larger screens 
+                        align-items: flex-start;
+                    }
+            
+                    .gift-reg {
+                        flex: 1;
+                        margin-right: 20px;
+                    }
+            
+                    .gift-reg-button {
+                        align-self: flex-end;
+                    }
+                } */
+            </style>
+
 
         </div>
     </main>
@@ -264,30 +370,31 @@
 
     <script>
         document.getElementById('add-plus-one-btn').addEventListener('click', function () {
-            document.getElementById('popup').style.display = 'block';
-            document.querySelector('.photo_class').classList.add('blur');
-        });
+                document.getElementById('popup').style.display = 'block';
+                //document.querySelector('.photo_class').classList.add('blur');
+            });
 
-        document.getElementById('close_btn').addEventListener('click', function () {
-            document.getElementById('popup').style.display = 'none';
-            document.querySelector('.photo_class').classList.remove('blur');
-            document.getElementById('plus_one_name').value = '';
-            document.getElementById('plus_one_surname').value = '';
-            document.getElementById('plus_one_relation').selectedIndex = 0;
-        });
-
-        document.getElementById('add-btn').addEventListener('click', function () {
-            const name = document.getElementById('plus_one_name').value;
-            const surname = document.getElementById('plus_one_surname').value;
-            const relation = document.getElementById('plus_one_relation').value;
-
-            if (name && surname && relation) {
+            document.getElementById('close_btn').addEventListener('click', function () {
                 document.getElementById('popup').style.display = 'none';
                 document.querySelector('.photo_class').classList.remove('blur');
-            } else {
-                alert('Please fill in all fields.');
-            }
-        });
+                document.getElementById('plus_one_name').value = '';
+                document.getElementById('plus_one_surname').value = '';
+                document.getElementById('plus_one_relation').selectedIndex = 0;
+            });
+
+            document.getElementById('add-btn').addEventListener('click', function () {
+                const name = document.getElementById('plus_one_name').value;
+                const surname = document.getElementById('plus_one_surname').value;
+                const relation = document.getElementById('plus_one_relation').value;
+
+                if (name && surname && relation) {
+                    document.getElementById('popup').style.display = 'none';
+                    document.querySelector('.photo_class').classList.remove('blur');
+                } else {
+                    alert('Please fill in all fields.');
+                }
+            });
+
     </script>
 
     <!-- Jquery needed -->
